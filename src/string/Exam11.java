@@ -1,36 +1,26 @@
 package string;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Exam11 {
     public String solution(String str) {
         String answer = "";
-        String ch = str.split(" ")[1];
-        str = str.split(" ")[0];
-        int dist = 1000;
-        int[] distances = new int[str.length()];
+        char ch = '0';
+        char target = '0';
+        int num = 1;
         for(int i=0;i<str.length();i++){
-            if(ch.equals(Character.toString(str.charAt(i)))){
-                dist = 0;
-                distances[i] = dist;
-            } else {
-                dist+=1;
-                distances[i] = dist;
+            target = str.charAt(i);
+            if(ch == target){
+                num += 1;
+            }else{
+                if(num > 1) answer += num;
+                num = 1;
+                answer += target;
+                ch = target;
             }
         }
-
-        dist = 1000;
-        for(int i=distances.length-1;i>=0;i--){
-            if(distances[i] == 0 ) {
-                dist = 1;continue;
-            }
-            if(dist < distances[i]) {
-                distances[i] = dist;
-                dist++;
-            }
-        }
-        answer = Arrays.toString(distances).replaceAll("[^0-9 ]","");
+        if(num > 1 ) answer += num;
         return answer;
     }
 
