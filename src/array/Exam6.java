@@ -9,7 +9,6 @@ public class Exam6 {
             System.out.println("target : " + target);
             for(int j=1;j<=target/2;j++){
                 if(target%j==0 && j != 1){
-                    System.out.println(target + " " + j);
                     break;
                 }
                 if(j==target/2) answer += target + " ";
